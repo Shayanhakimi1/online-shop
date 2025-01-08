@@ -1,6 +1,4 @@
 from flask import Flask
-from flask import Flask
-from sqlalchemy.orm import DeclarativeBase
 from blueprints.general import app as general
 from blueprints.user import app as user
 from blueprints.admin import app as admin
@@ -14,6 +12,7 @@ app.register_blueprint(user)
 
 
 app.config["SQLALCHEMY_DATABASE_URI"] = config.SQLALCHEMY_DATABASE_URI
+app.config['SECRET_KEY'] = config.SECRET_KEY
 extensions.db.init_app(app)
 
 with app.app_context():
